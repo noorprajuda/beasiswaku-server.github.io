@@ -104,6 +104,13 @@ module.exports = (sequelize, DataTypes) => {
           isEmpty: "Id institusi tidak boleh kosong",
         },
       },
+      imageUrl: {
+        type: DataTypes.STRING,
+        validate: {
+          isNull: "Link foto tidak boleh kosong",
+          isEmpty: "Link foto tidak boleh kosong",
+        },
+      },
     },
     {
       sequelize,
