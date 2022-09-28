@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmpty: "Nama institusi tidak boleh kosong",
         },
       },
-      websiteURL: {
+      websiteUrl: {
         type: DataTypes.STRING,
         validate: {
           isNull: "URL website tidak boleh kosong",
