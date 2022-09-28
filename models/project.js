@@ -26,13 +26,6 @@ module.exports = (sequelize, DataTypes) => {
           isEmpty: "Nama proyek tidak boleh kosong",
         },
       },
-      DonatorId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          isNull: "Id donator tidak boleh kosong",
-          isEmpty: "Id donator tidak boleh kosong",
-        },
-      },
       UserId: {
         type: DataTypes.INTEGER,
         foreignKey: true,

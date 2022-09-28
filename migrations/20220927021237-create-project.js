@@ -12,10 +12,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      DonatorId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
       UserId: {
         foreignKey: true,
         allowNull: false,
