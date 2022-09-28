@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      ProjectDonator.hasMany(models.Project);
+      ProjectDonator.hasMany(models.Donator);
     }
   }
   ProjectDonator.init(

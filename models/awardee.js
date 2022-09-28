@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Project);
-      User.hasMany(models.Update);
+      Awardee.hasMany(models.Project);
+      Awardee.hasMany(models.Update);
+      Awardee.belongsTo(models.Institution);
     }
   }
   Awardee.init(

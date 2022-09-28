@@ -9,10 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Project.belongsTo(models.User);
+      Project.belongsTo(models.Awardee);
       Project.belongsTo(models.ProjectStatus);
       Project.hasMany(models.ProjectStatusHistory);
       Project.hasMany(models.Update);
+      Project.hasMany(models.Institution);
+      Project.belongsTo(models.ProjectDonator);
     }
   }
   Project.init(

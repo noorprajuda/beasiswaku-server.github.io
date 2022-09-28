@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Update.belongsTo(models.Project);
-      Update.belongsTo(models.User);
+      Update.belongsTo(models.Awardee);
     }
   }
   Update.init(

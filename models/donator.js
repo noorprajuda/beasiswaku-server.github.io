@@ -10,8 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Project);
-      User.hasMany(models.Update);
+      Donator.belongsTo(models.ProjectDonator);
     }
   }
   Donator.init(
