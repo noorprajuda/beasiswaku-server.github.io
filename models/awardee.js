@@ -1,6 +1,8 @@
 "use strict";
 const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
+const { hashPassword } = require("../helpers/bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   class Awardee extends Model {
     /**
@@ -10,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Awardee.hasMany(models.Project);
+      Awardee.hasOne(models.Project);
       Awardee.hasMany(models.Update);
       Awardee.belongsTo(models.Institution);
     }
@@ -67,12 +69,12 @@ module.exports = (sequelize, DataTypes) => {
       InstitutionId: {
         type: DataTypes.INTEGER,
         validate: {
-          isNull: "Id institusi tidak boleh kosong",
-          isEmpty: "Id institusi tidak boleh kosong",
+          isNull: "Id proyek tidak boleh kosong",
+          isEmpty: "Id proyek tidak boleh kosong",
         },
       },
       idNumber: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.STRING,
         validate: {
           isNull: "KTP tidak boleh kosong",
           isEmpty: "KTP tidak boleh kosong",
@@ -84,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Awardee",
       hooks: {
         beforeCreate(instance) {
-          instance.password = bcrypt.hashSync(instance.password, 10);
+          instance.password = hashPassword(instance.password);
           instance.createdAt = new Date();
           instance.updatedAt = new Date();
         },

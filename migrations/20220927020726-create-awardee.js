@@ -8,6 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      InstitutionId: {
+        foreignKey: true,
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       firstName: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -33,13 +38,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      InstitutionId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
       idNumber: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

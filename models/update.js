@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmpty: "Id proyek tidak boleh kosong",
         },
       },
-      UserId: {
+      AwardeeId: {
         type: DataTypes.INTEGER,
         validate: {
           isNull: "Id user tidak boleh kosong",
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "update",
+      modelName: "Update",
       hooks: {
         beforeCreate(instance) {
           instance.ts = new Date();

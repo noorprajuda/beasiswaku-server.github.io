@@ -8,13 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      AwardeeId: {
+        foreignKey: true,
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       institutionName: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       websiteUrl: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       address: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {

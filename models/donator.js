@@ -1,6 +1,8 @@
 "use strict";
 const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
+const { hashPassword } = require("../helpers/bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   class Donator extends Model {
     /**
@@ -10,11 +12,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Donator.belongsTo(models.ProjectDonator);
+      Donator.hasMany(models.ProjectDonator);
     }
   }
   Donator.init(
     {
+      ProjectDonatorId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          isNull: "Id proyek donatur tidak boleh kosong",
+          isEmpty: "Id proyek donatur tidak boleh kosong",
+        },
+      },
       firstName: {
         type: DataTypes.STRING,
         validate: {
@@ -63,14 +72,14 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       totalAmount: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         validate: {
           isNull: "Jumlah total tidak boleh kosong",
           isEmpty: "Jumlah total tidak boleh kosong",
         },
       },
       idNumber: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.STRING,
         validate: {
           isNull: "KTP tidak boleh kosong",
           isEmpty: "KTP tidak boleh kosong",
@@ -82,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Donator",
       hooks: {
         beforeCreate(instance) {
-          instance.password = bcrypt.hashSync(instance.password, 10);
+          instance.password = hashPassword(instance.password);
           instance.createdAt = new Date();
           instance.updatedAt = new Date();
         },

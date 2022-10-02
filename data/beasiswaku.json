@@ -1,0 +1,78 @@
+{
+  "ProjectStatuses": [
+    {
+      "status": "funding"
+    },
+    {
+      "status": "funded"
+    },
+    {
+      "status": "distributed"
+    }
+  ],
+  "Donators": [
+    {
+      "firstName": "Eka",
+      "lastName": "Putra",
+      "userName": "EkaPutra",
+      "email": "ekaputra@mail.com",
+      "password": "testing1234",
+      "projectsSupported": 1,
+      "totalAmount": 1000000,
+      "idNumber": "3578089008900000"
+    }
+  ],
+  "Institutions": [
+    {
+      "AwardeeId": 1,
+      "institutionName": "Institut Teknologi Bandung",
+      "websiteUrl": "www.itb.ac.id",
+      "address": "Jl. Ganesha no. 10 Bandung"
+    }
+  ],
+  "Awardees": [
+    {
+      "InstitutionId": 1,
+      "firstName": "Eka",
+      "lastName": "Putra",
+      "userName": "EkaPutra",
+      "email": "ekaputra@mail.com",
+      "password": "testing1234",
+      "studyMotivation":
+        "Saya ingin switch career menjadi fullstack developer sehingga saya bisa bekerja dan menghidupi orang tua dan keluarga saya.",
+      "idNumber": "3578089008900000"
+    }
+  ],
+  "Projects": [
+    {
+      "projectName": "Hacktiv8",
+      "AwardeeId": 1,
+      "projectDescription":
+        "Untuk mengambil program full stack javascript immersive program di Hacktiv8",
+      "projectLocation": "Online atau Jakarta",
+      "startDate": "01-10-2022",
+      "endDate": "01-10-2022",
+      "goal": 35000000,
+      "pledged": 0,
+      "investors": 0,
+      "ProjectStatusId": 1,
+      "InstitutionId": 1,
+      "imageUrl":
+        "https://scontent-lax3-2.xx.fbcdn.net/v/t1.6435-9/118823499_1792148844275855_3766809862209313384_n.png?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=u0iWNMIJOXMAX9UDY3g&_nc_ht=scontent-lax3-2.xx&oh=00_AT8V0LFUcgfLS2UR_ohv3Uvb-lKDrzqTmevxg55_XYoRuQ&oe=6358FF66"
+    }
+  ],
+  "ProjectDonators": [
+    { "ProjectId": 1, "DonatorId": 1, "donationAmount": 1000000 }
+  ],
+  "ProjectStatusHistories": [
+    { "ProjectId": 1, "ProjectStatusId": 1, "ts": "01-10-2022" }
+  ],
+  "Updates": [
+    {
+      "ProjectId": 1,
+      "AwardeeId": 1,
+      "updateText": "distributed",
+      "ts": "01-10-2022"
+    }
+  ]
+}

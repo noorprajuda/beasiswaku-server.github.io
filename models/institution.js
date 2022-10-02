@@ -10,11 +10,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Institution.hasMany(models.Awardee);
-      Institution.belongsTo(models.Project);
+      Institution.hasMany(models.Project);
     }
   }
   Institution.init(
     {
+      AwardeeId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          isNull: "Id penerima beasiswa tidak boleh kosong",
+          isEmpty: "Id penerima beasiswa tidak boleh kosong",
+        },
+      },
       institutionName: {
         type: DataTypes.STRING,
         validate: {

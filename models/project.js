@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       Project.belongsTo(models.ProjectStatus);
       Project.hasMany(models.ProjectStatusHistory);
       Project.hasMany(models.Update);
-      Project.hasMany(models.Institution);
-      Project.belongsTo(models.ProjectDonator);
+      Project.belongsTo(models.Institution);
+      Project.hasMany(models.ProjectDonator);
     }
   }
   Project.init(
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmpty: "Nama proyek tidak boleh kosong",
         },
       },
-      UserId: {
+      AwardeeId: {
         type: DataTypes.INTEGER,
         foreignKey: true,
         validate: {
@@ -63,14 +63,14 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       goal: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         validate: {
           isNull: "Tujuan tidak boleh kosong",
           isEmpty: "Tujuan tidak boleh kosong",
         },
       },
       pledged: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         validate: {
           isNull: "Telah didanai tidak boleh kosong",
           isEmpty: "Telah didanai tidak boleh kosong",
