@@ -5,21 +5,35 @@ class PaymentController {
   static async payment(req, res, next) {
     try {
       console.log("PAYMENT SETTLEMENT");
-      const { name, email, amount, message } = req.body;
+      const { name, email, amount, fee } = req.body;
       console.log(req.body);
       const newPayment = await Payment.create({
         name,
         email,
         amount,
-        message,
+        fee,
       });
-      console.log("newPayment OrderId", newPayment.OrderId);
+      console.log("newPayment ", newPayment);
 
       const transaction = await snap.createTransaction({
         transaction_details: {
           order_id: newPayment.OrderId,
           gross_amount: newPayment.amount,
         },
+        item_details: [
+          {
+            id: "a01",
+            price: Number(newPayment.amount) - Number(newPayment.fee),
+            quantity: 1,
+            name: "Dana Beasiswa",
+          },
+          {
+            id: "b02",
+            price: Number(newPayment.fee),
+            quantity: 1,
+            name: "Biaya Transaksi",
+          },
+        ],
       });
 
       let transactionToken = transaction.token;

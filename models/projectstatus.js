@@ -17,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       status: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Status tidak boleh kosong",
-          isEmpty: "Status tidak boleh kosong",
+          notNull: { msg: "Status tidak boleh kosong" },
+          notEmpty: { msg: "Status tidak boleh kosong" },
         },
       },
     },

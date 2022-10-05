@@ -17,39 +17,36 @@ module.exports = (sequelize, DataTypes) => {
   }
   Donator.init(
     {
-      ProjectDonatorId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          isNull: "Id proyek donatur tidak boleh kosong",
-          isEmpty: "Id proyek donatur tidak boleh kosong",
-        },
-      },
       firstName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama depan tidak boleh kosong",
-          isEmpty: "Nama depan tidak boleh kosong",
+          notNull: { msg: "Nama depan tidak boleh kosong" },
+          notEmpty: { msg: "Nama depan tidak boleh kosong" },
         },
       },
       lastName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama belakang tidak boleh kosong",
-          isEmpty: "Nama belakang tidak boleh kosong",
+          notNull: { msg: "Nama belakang tidak boleh kosong" },
+          notEmpty: { msg: "Nama belakang tidak boleh kosong" },
         },
       },
       userName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Username tidak boleh kosong",
-          isEmpty: "Username tidak boleh kosong",
+          notNull: { msg: "Username tidak boleh kosong" },
+          notEmpty: { msg: "Username tidak boleh kosong" },
         },
       },
       email: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "E-mail tidak boleh kosong",
-          isEmpty: "E-mail tidak boleh kosong",
+          notNull: { msg: "E-mail tidak boleh kosong" },
+          notEmpty: { msg: "E-mail tidak boleh kosong" },
           isEmail: { attributes: true, msg: "E-mail tidak valid" },
         },
         unique: {
@@ -59,30 +56,34 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Kata sandi tidak boleh kosong",
-          isEmpty: "Kata sandi tidak boleh kosong",
+          notNull: { msg: "Kata sandi tidak boleh kosong" },
+          notEmpty: { msg: "Kata sandi tidak boleh kosong" },
         },
       },
       projectsSupported: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Project supported tidak boleh kosong",
-          isEmpty: "Project supported tidak boleh kosong",
+          notNull: { msg: "Project supported tidak boleh kosong" },
+          notEmpty: { msg: "Project supported tidak boleh kosong" },
         },
       },
       totalAmount: {
         type: DataTypes.BIGINT,
+        allowNull: false,
         validate: {
-          isNull: "Jumlah total tidak boleh kosong",
-          isEmpty: "Jumlah total tidak boleh kosong",
+          notNull: { msg: "Jumlah total tidak boleh kosong" },
+          notEmpty: { msg: "Jumlah total tidak boleh kosong" },
         },
       },
       idNumber: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "KTP tidak boleh kosong",
-          isEmpty: "KTP tidak boleh kosong",
+          notNull: { msg: "KTP tidak boleh kosong" },
+          notEmpty: { msg: "KTP tidak boleh kosong" },
         },
       },
     },

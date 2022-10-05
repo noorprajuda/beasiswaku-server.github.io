@@ -113,17 +113,21 @@ class userController {
         next({ name: "Unauthorized" });
       } else {
         console.log(user.dataValues, "<<<<<<<<<<<user userController login");
-        console.log(user.dataValues.id, user.dataValues.email);
+        const { firstName, lastName } = user.dataValues;
+        let name = firstName + " " + lastName;
+        console.log(name, "<<<<<<<name");
+
+        // console.log(user.dataValues.id, user.dataValues.email);
         const access_token = signToken({
           id: user.dataValues.id,
           email: user.dataValues.email,
         });
 
-        console.log(access_token);
+        // console.log(access_token);
 
         res.status(200).json({
           access_token,
-          name: user.name,
+          name,
           email: user.email,
         });
       }
@@ -158,6 +162,9 @@ class userController {
         next({ name: "Unauthorized" });
       } else {
         console.log(user.dataValues, "<<<<<<<<<<<user userController login");
+        const { firstName, lastName } = user.dataValues;
+        let name = firstName + " " + lastName;
+        console.log(name, "<<<<<<<name");
         const access_token = signToken({
           id: user.id,
           email: user.email,
@@ -165,7 +172,7 @@ class userController {
 
         res.status(200).json({
           access_token,
-          name: user.name,
+          name,
           email: user.email,
         });
       }
@@ -218,6 +225,41 @@ class userController {
       res.status(500).json({
         message: "Internal Server Error",
       });
+    }
+  }
+
+  static async changeProjectPledged(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { id: AwardeeId } = req.user;
+
+      const findProject = await Project.findByPk(id);
+
+      if (!findProject) {
+        throw { name: "NotFound" };
+      }
+
+      const updatedProject = await Project.update(
+        { pledged: "Paid" },
+        {
+          where: {
+            id,
+          },
+          order: [["id", "ASC"]],
+        }
+      );
+
+      console.log(updatedMyBooking, "<<<<updated MyBooking");
+
+      if (!updatedMyBooking) {
+        throw { name: "NotFound" };
+      }
+
+      res.status(200).json({
+        message: "My booking succesfully paid",
+      });
+    } catch (err) {
+      next(err);
     }
   }
 

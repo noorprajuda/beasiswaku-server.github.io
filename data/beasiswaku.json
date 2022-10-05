@@ -62,7 +62,7 @@
     }
   ],
   "ProjectDonators": [
-    { "ProjectId": 1, "DonatorId": 1, "donationAmount": 1000000 }
+    { "ProjectId": 1, "DonatorId": 1, "donationAmount": 0 }
   ],
   "ProjectStatusHistories": [
     { "ProjectId": 1, "ProjectStatusId": 1, "ts": "01-10-2022" }

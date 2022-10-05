@@ -9,11 +9,11 @@ const projectRoutes = require("./projects");
 
 router.use("/pub", pubRoutes);
 router.use("/projects", projectRoutes);
-router.use("/payment", paymentRoutes);
 router.post("/register", userController.register);
 router.post("/login", userController.login);
 
 router.use(authentication);
+router.use("/payment", paymentRoutes);
 router.use("/sports", sportRoutes);
 router.use("/histories", historyRoutes);
 

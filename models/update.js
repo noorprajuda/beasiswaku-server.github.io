@@ -17,31 +17,35 @@ module.exports = (sequelize, DataTypes) => {
     {
       ProjectId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Id proyek tidak boleh kosong",
-          isEmpty: "Id proyek tidak boleh kosong",
+          notNull: { msg: "Id proyek tidak boleh kosong" },
+          notEmpty: { msg: "Id proyek tidak boleh kosong" },
         },
       },
       AwardeeId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Id user tidak boleh kosong",
-          isEmpty: "Id user tidak boleh kosong",
+          notNull: { msg: "Id user tidak boleh kosong" },
+          notEmpty: { msg: "Id user tidak boleh kosong" },
         },
       },
       updateText: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Teks update tidak boleh kosong",
-          isEmpty: "Teks update tidak boleh kosong",
+          notNull: { msg: "Teks update tidak boleh kosong" },
+          notEmpty: { msg: "Teks update tidak boleh kosong" },
         },
       },
 
       ts: {
         type: DataTypes.DATE,
+        allowNull: false,
         validate: {
-          isNull: "Timestamp tidak boleh kosong",
-          isEmpty: "Timestamp tidak boleh kosong",
+          notNull: { msg: "Timestamp tidak boleh kosong" },
+          notEmpty: { msg: "Timestamp tidak boleh kosong" },
         },
       },
     },

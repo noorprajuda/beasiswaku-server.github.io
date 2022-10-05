@@ -21,30 +21,34 @@ module.exports = (sequelize, DataTypes) => {
     {
       firstName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama depan tidak boleh kosong",
-          isEmpty: "Nama depan tidak boleh kosong",
+          notNull: { msg: "Nama depan tidak boleh kosong" },
+          notEmpty: { msg: "Nama depan tidak boleh kosong" },
         },
       },
       lastName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama belakang tidak boleh kosong",
-          isEmpty: "Nama belakang tidak boleh kosong",
+          notNull: { msg: "Nama belakang tidak boleh kosong" },
+          notEmpty: { msg: "Nama belakang tidak boleh kosong" },
         },
       },
       userName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Username tidak boleh kosong",
-          isEmpty: "Username tidak boleh kosong",
+          notNull: { msg: "Username tidak boleh kosong" },
+          notEmpty: { msg: "Username tidak boleh kosong" },
         },
       },
       email: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "E-mail tidak boleh kosong",
-          isEmpty: "E-mail tidak boleh kosong",
+          notNull: { msg: "E-mail tidak boleh kosong" },
+          notEmpty: { msg: "E-mail tidak boleh kosong" },
           isEmail: { attributes: true, msg: "E-mail tidak valid" },
         },
         unique: {
@@ -54,30 +58,34 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Kata sandi tidak boleh kosong",
-          isEmpty: "Kata sandi tidak boleh kosong",
+          notNull: { msg: "Kata sandi tidak boleh kosong" },
+          notEmpty: { msg: "Kata sandi tidak boleh kosong" },
         },
       },
       studyMotivation: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Motivasi belajar tidak boleh kosong",
-          isEmpty: "Motivasi belajar tidak boleh kosong",
+          notNull: { msg: "Motivasi belajar tidak boleh kosong" },
+          notEmpty: { msg: "Motivasi belajar tidak boleh kosong" },
         },
       },
       InstitutionId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Id proyek tidak boleh kosong",
-          isEmpty: "Id proyek tidak boleh kosong",
+          notNull: { msg: "Id proyek tidak boleh kosong" },
+          notEmpty: { msg: "Id proyek tidak boleh kosong" },
         },
       },
       idNumber: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "KTP tidak boleh kosong",
-          isEmpty: "KTP tidak boleh kosong",
+          notNull: { msg: "KTP tidak boleh kosong" },
+          notEmpty: { msg: "KTP tidak boleh kosong" },
         },
       },
     },

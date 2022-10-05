@@ -1,5 +1,6 @@
 const {
   Project,
+  ProjectDonator,
   ProjectStatus,
   Institution,
   Sport,
@@ -25,47 +26,46 @@ const getPagingData = (data, page, limit) => {
 };
 
 class projectController {
-  static async updateFitness(req, res, next) {
+  static async updateProject(req, res, next) {
     try {
-      console.log("updateFitness");
-      const id = req.user.id;
-      console.log("id>>", id);
-      const { height, weight, neck, waist, hip, goal, activitylevel } =
-        req.body;
+      // console.log("updateProject");
+      console.log("req>>>>>>>>>>", req.user);
+      const { id: DonatorId } = req.user;
+      console.log("DonatorId>>", DonatorId);
+      const { ProjectId } = req.params;
+      const { amount } = req.body;
 
       console.log("req Body>>>>", req.body);
 
-      const updatedUser = await User.update(
+      const project = await Project.findOne({ where: { id: ProjectId } });
+
+      console.log("project.pledged>>>>>", project.pledged);
+      console.log("amount>>>>>", amount);
+
+      let totalPledged = Number(project.pledged) + Number(amount);
+      console.log(totalPledged);
+
+      const updatedProject = await Project.update(
         {
-          height: height,
-          weight: weight,
-          neck: neck,
-          waist: waist,
-          hip: hip,
-          goal: goal,
-          activitylevel: activitylevel,
+          pledged: totalPledged,
+          investors: project.investors + 1,
         },
-        { where: { id: id } }
+        { where: { id: ProjectId } }
       );
 
-      console.log("updatedUser>>>>", updatedUser);
+      console.log("updatedProject>>>>", updatedProject);
 
-      if (updatedUser <= 0) {
-        next({ name: "InvalidUser" });
+      if (updatedProject <= 0) {
+        next({ name: "InvalidProject" });
       } else {
-        const createHistory = await History.create({
-          UserId: id,
-          height: height,
-          weight: weight,
-          neck: neck,
-          waist: waist,
-          hip: hip,
-          goal: goal,
-          activitylevel: activitylevel,
+        const createHistory = await ProjectDonator.create({
+          ProjectId,
+          DonatorId,
+          donationAmount: Number(amount),
         });
 
         res.status(200).json({
-          message: `Your data fitness success to update`,
+          message: `Project pledged success to update`,
         });
       }
     } catch (err) {
@@ -75,7 +75,7 @@ class projectController {
   }
   static async createProject(req, res, next) {
     try {
-      const { id } = req.user;
+      const { id } = req.Project;
       const { title, synopsis, trailerUrl, imgUrl, rating, genreId } = req.body;
 
       const createSport = await Sport.create({
@@ -159,10 +159,55 @@ class projectController {
       if (projects.length === 0) {
         throw { name: "SportNotFound" };
       } else {
-        projects.map((project) => {
+        // await Project.update(
+        //   {
+        //     investors: await ProjectDonator.count({
+        //       where: {
+        //         ProjectId: Project.id,
+        //         donationAmount: { [Op.gt]: 0 },
+        //       },
+        //     }),
+        //   },
+        //   { where: { id: Project.id } }
+        // );
+
+        projects.map(async (project) => {
+          // await Project.update(
+          //   {
+          //     investors: await ProjectDonator.count({
+          //       where: {
+          //         ProjectId: project.id,
+          //         donationAmount: { [Op.gt]: 0 },
+          //       },
+          //     }),
+          //   },
+          //   { where: { id: project.id } }
+          // );
+
+          // .then((data) => {
+          //   data = newInvestors;
+          // project.dataValues.newInvestors = newInvestors;
+          // })
+          // .catch((err) => {
+          //   console.log(err);
+          // });
+
+          // console.log(project.dataValues.investors);
+
           project.dataValues.pledgedPercentage =
             (Number(project.pledged) * 100) / Number(project.goal);
         });
+
+        // console.log("projects>>>>", projects);
+
+        // const investors = await ProjectDonator.count({
+        //   where: {
+        //     ProjectId: 1,
+        //     donationAmount: { [Op.gt]: 0 },
+        //   },
+        // });
+
+        // console.log("jumlah investors>>>", investors);
 
         res.status(200).json({
           statusCode: 200,
