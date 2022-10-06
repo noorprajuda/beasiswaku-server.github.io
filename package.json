@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/noorprajuda/beasiswaku-server.github.io#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "google-auth-library": "^8.5.2",
     "jsonwebtoken": "^8.5.1",
+    "midtrans-client": "^1.3.1",
     "pg": "^8.8.0",
     "sequelize": "^6.23.1"
   },

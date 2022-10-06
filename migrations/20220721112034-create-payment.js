@@ -1,29 +1,31 @@
 "use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Institutions", {
+    await queryInterface.createTable("Payments", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      AwardeeId: {
-        foreignKey: true,
-        allowNull: false,
+      name: {
+        type: Sequelize.STRING,
+      },
+      email: {
+        type: Sequelize.STRING,
+      },
+      amount: {
         type: Sequelize.INTEGER,
       },
-      institutionName: {
-        allowNull: false,
+      fee: {
+        type: Sequelize.INTEGER,
+      },
+      OrderId: {
         type: Sequelize.STRING,
       },
-      websiteUrl: {
-        allowNull: false,
+      paymentStatus: {
         type: Sequelize.STRING,
-      },
-      address: {
-        allowNull: false,
-        type: Sequelize.STRING,
+        defaultValue: "paid",
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Institutions");
+    await queryInterface.dropTable("Payments");
   },
 };

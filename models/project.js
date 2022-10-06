@@ -13,97 +13,109 @@ module.exports = (sequelize, DataTypes) => {
       Project.belongsTo(models.ProjectStatus);
       Project.hasMany(models.ProjectStatusHistory);
       Project.hasMany(models.Update);
-      Project.hasMany(models.Institution);
-      Project.belongsTo(models.ProjectDonator);
+      Project.belongsTo(models.Institution);
+      Project.hasMany(models.ProjectDonator);
     }
   }
   Project.init(
     {
       projectName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama proyek tidak boleh kosong",
-          isEmpty: "Nama proyek tidak boleh kosong",
+          notNull: { msg: "Nama proyek tidak boleh kosong" },
+          notEmpty: { msg: "Nama proyek tidak boleh kosong" },
         },
       },
-      UserId: {
+      AwardeeId: {
         type: DataTypes.INTEGER,
         foreignKey: true,
+        allowNull: false,
         validate: {
-          isNull: "Id user tidak boleh kosong",
-          isEmpty: "Id user tidak boleh kosong",
+          notNull: { msg: "Id user tidak boleh kosong" },
+          notEmpty: { msg: "Id user tidak boleh kosong" },
         },
       },
       projectDescription: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Deskripsi proyek tidak boleh kosong",
-          isEmpty: "Deskripsi proyek tidak boleh kosong",
+          notNull: { msg: "Deskripsi proyek tidak boleh kosong" },
+          notEmpty: { msg: "Deskripsi proyek tidak boleh kosong" },
         },
       },
       projectLocation: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Lokasi proyek tidak boleh kosong",
-          isEmpty: "Lokasi proyek tidak boleh kosong",
+          notNull: { msg: "Lokasi proyek tidak boleh kosong" },
+          notEmpty: { msg: "Lokasi proyek tidak boleh kosong" },
         },
       },
       startDate: {
         type: DataTypes.DATE,
+        allowNull: false,
         validate: {
-          isNull: "Tanggal mulai tidak boleh kosong",
-          isEmpty: "Tanggal mulai tidak boleh kosong",
+          notNull: { msg: "Tanggal mulai tidak boleh kosong" },
+          notEmpty: { msg: "Tanggal mulai tidak boleh kosong" },
         },
       },
       endDate: {
         type: DataTypes.DATE,
+        allowNull: false,
         validate: {
-          isNull: "Tanggal selesai tidak boleh kosong",
-          isEmpty: "Tanggal selesai tidak boleh kosong",
+          notNull: { mssg: "Tanggal selesai tidak boleh kosong" },
+          notEmpty: { mssg: "Tanggal selesai tidak boleh kosong" },
         },
       },
       goal: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        allowNull: false,
         validate: {
-          isNull: "Tujuan tidak boleh kosong",
-          isEmpty: "Tujuan tidak boleh kosong",
+          notNull: { msg: "Tujuan tidak boleh kosong" },
+          notEmpty: { msg: "Tujuan tidak boleh kosong" },
         },
       },
       pledged: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        allowNull: false,
         validate: {
-          isNull: "Telah didanai tidak boleh kosong",
-          isEmpty: "Telah didanai tidak boleh kosong",
+          notNull: { msg: "Telah didanai tidak boleh kosong" },
+          notEmpty: { msg: "Telah didanai tidak boleh kosong" },
         },
       },
       investors: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Jumlah investor tidak boleh kosong",
-          isEmpty: "Jumlah investor tidak boleh kosong",
+          notNull: { msg: "Jumlah investor tidak boleh kosong" },
+          notEmpty: { msg: "Jumlah investor tidak boleh kosong" },
         },
       },
       ProjectStatusId: {
         type: DataTypes.INTEGER,
         foreignKey: true,
+        allowNull: false,
         validate: {
-          isNull: "Id status proyek tidak boleh kosong",
-          isEmpty: "Id status proyek tidak boleh kosong",
+          notNull: { msg: "Id status proyek tidak boleh kosong" },
+          notEmpty: { msg: "Id status proyek tidak boleh kosong" },
         },
       },
       InstitutionId: {
         type: DataTypes.INTEGER,
         foreignKey: true,
+        allowNull: false,
         validate: {
-          isNull: "Id institusi tidak boleh kosong",
-          isEmpty: "Id institusi tidak boleh kosong",
+          notNull: { msg: "Id institusi tidak boleh kosong" },
+          notEmpty: { msg: "Id institusi tidak boleh kosong" },
         },
       },
       imageUrl: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Link foto tidak boleh kosong",
-          isEmpty: "Link foto tidak boleh kosong",
+          notNull: { msg: "Link foto tidak boleh kosong" },
+          notEmpty: { msg: "Link foto tidak boleh kosong" },
         },
       },
     },

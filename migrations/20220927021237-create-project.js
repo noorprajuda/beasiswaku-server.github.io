@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      UserId: {
+      AwardeeId: {
         foreignKey: true,
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -35,11 +35,11 @@ module.exports = {
       },
       goal: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       pledged: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       investors: {
         allowNull: false,
@@ -57,7 +57,7 @@ module.exports = {
       },
       imageUrl: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

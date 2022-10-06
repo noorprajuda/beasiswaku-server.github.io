@@ -16,10 +16,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      userName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       email: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -35,11 +31,11 @@ module.exports = {
       },
       totalAmount: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       idNumber: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

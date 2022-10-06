@@ -10,30 +10,41 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Institution.hasMany(models.Awardee);
-      Institution.belongsTo(models.Project);
+      Institution.hasMany(models.Project);
     }
   }
   Institution.init(
     {
+      AwardeeId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Id penerima beasiswa tidak boleh kosong" },
+          notEmpty: { msg: "Id penerima beasiswa tidak boleh kosong" },
+        },
+      },
       institutionName: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Nama institusi tidak boleh kosong",
-          isEmpty: "Nama institusi tidak boleh kosong",
+          notNull: { msg: "Nama institusi tidak boleh kosong" },
+          notEmpty: { msg: "Nama institusi tidak boleh kosong" },
         },
       },
       websiteUrl: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "URL website tidak boleh kosong",
-          isEmpty: "URL website tidak boleh kosong",
+          notNull: { msg: "URL website tidak boleh kosong" },
+          notEmpty: { msg: "URL website tidak boleh kosong" },
         },
       },
       address: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          isNull: "Alamat tidak boleh kosong",
-          isEmpty: "Alamat tidak boleh kosong",
+          notNull: { msg: "Alamat tidak boleh kosong" },
+          notEmpty: { msg: "Alamat tidak boleh kosong" },
         },
       },
     },

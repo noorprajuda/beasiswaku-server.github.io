@@ -9,31 +9,34 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ProjectDonator.hasMany(models.Project);
-      ProjectDonator.hasMany(models.Donator);
+      ProjectDonator.belongsTo(models.Project);
+      ProjectDonator.belongsTo(models.Donator);
     }
   }
   ProjectDonator.init(
     {
       ProjectId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Id proyek tidak boleh kosong",
-          isEmpty: "Id proyek tidak boleh kosong",
+          notNull: { msg: "Id proyek tidak boleh kosong" },
+          notEmpty: { msg: "Id proyek tidak boleh kosong" },
         },
       },
       DonatorId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Id donatur tidak boleh kosong",
-          isEmpty: "Id donatur tidak boleh kosong",
+          notNull: { msg: "Id donatur tidak boleh kosong" },
+          notEmpty: { msg: "Id donatur tidak boleh kosong" },
         },
       },
       donationAmount: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          isNull: "Jumlah donasi tidak boleh kosong",
-          isEmpty: "Jumlah donasi tidak boleh kosong",
+          notNull: { msg: "Jumlah donasi tidak boleh kosong" },
+          notEmpty: { msg: "Jumlah donasi tidak boleh kosong" },
         },
       },
     },

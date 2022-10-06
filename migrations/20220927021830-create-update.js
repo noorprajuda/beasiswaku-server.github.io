@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       ProjectId: {
+        foreignKey: true,
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      UserId: {
+      AwardeeId: {
+        foreignKey: true,
         allowNull: false,
         type: Sequelize.INTEGER,
       },
