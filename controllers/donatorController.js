@@ -1,9 +1,9 @@
 const { OAuth2Client } = require("google-auth-library");
-const { Awardee } = require("../models");
+const { Awardee, Donator } = require("../models");
 const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
 
-class userController {
+class donatorController {
   static async changeIsSubscribe(req, res, next) {
     try {
       const { email } = req.body;
@@ -35,8 +35,8 @@ class userController {
       if (!password) {
         next({ name: "PasswordRequired" });
       }
-      const role = "Admin";
-      const user = await User.create({ email, password, role });
+
+      const user = await Donator.create({ email, password });
       res.status(201).json({ id: user.id, email: user.email });
     } catch (err) {
       next(err);
@@ -101,7 +101,7 @@ class userController {
         next({ name: "PasswordRequired" });
       }
 
-      const user = await Awardee.findOne({ where: { email: email } });
+      const user = await Donator.findOne({ where: { email: email } });
 
       if (user === null) {
         console.log("user null");
@@ -112,7 +112,7 @@ class userController {
       } else if (!comparePassword(password, user.password)) {
         next({ name: "Unauthorized" });
       } else {
-        console.log(user.dataValues, "<<<<<<<<<<<user userController login");
+        console.log(user.dataValues, "<<<<<<<<<<<user donatorController login");
         const { firstName, lastName } = user.dataValues;
         let name = firstName + " " + lastName;
         console.log(name, "<<<<<<<name");
@@ -161,7 +161,7 @@ class userController {
         console.log("compare password failed..");
         next({ name: "Unauthorized" });
       } else {
-        console.log(user.dataValues, "<<<<<<<<<<<user userController login");
+        console.log(user.dataValues, "<<<<<<<<<<<user donatorController login");
         const { firstName, lastName } = user.dataValues;
         let name = firstName + " " + lastName;
         console.log(name, "<<<<<<<name");
@@ -309,4 +309,4 @@ class userController {
   }
 }
 
-module.exports = { userController };
+module.exports = { donatorController };

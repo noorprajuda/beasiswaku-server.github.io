@@ -1,16 +1,18 @@
 const router = require("express").Router();
-const { userController } = require("../controllers/userController");
+const { donatorController } = require("../controllers/donatorController");
 const authentication = require("../middlewares/authentication");
-const pubRoutes = require("./pub");
+
 const sportRoutes = require("./sport");
 const historyRoutes = require("./histories");
 const paymentRoutes = require("./payment");
 const projectRoutes = require("./projects");
+const donatorRoutes = require("./donators");
 
-router.use("/pub", pubRoutes);
 router.use("/projects", projectRoutes);
-router.post("/register", userController.register);
-router.post("/login", userController.login);
+router.use("/donators", donatorRoutes);
+
+// router.post("/register", donatorController.register);
+// router.post("/login", donatorController.login);
 
 router.use(authentication);
 router.use("/payment", paymentRoutes);

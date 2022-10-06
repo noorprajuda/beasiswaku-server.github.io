@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "New",
         validate: {
           notNull: { msg: "Nama depan tidak boleh kosong" },
           notEmpty: { msg: "Nama depan tidak boleh kosong" },
@@ -28,17 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "User",
         validate: {
           notNull: { msg: "Nama belakang tidak boleh kosong" },
           notEmpty: { msg: "Nama belakang tidak boleh kosong" },
-        },
-      },
-      userName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notNull: { msg: "Username tidak boleh kosong" },
-          notEmpty: { msg: "Username tidak boleh kosong" },
         },
       },
       email: {
@@ -65,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       projectsSupported: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
         validate: {
           notNull: { msg: "Project supported tidak boleh kosong" },
           notEmpty: { msg: "Project supported tidak boleh kosong" },
@@ -73,6 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       totalAmount: {
         type: DataTypes.BIGINT,
         allowNull: false,
+        defaultValue: 0,
         validate: {
           notNull: { msg: "Jumlah total tidak boleh kosong" },
           notEmpty: { msg: "Jumlah total tidak boleh kosong" },
@@ -81,6 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       idNumber: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: 0,
         validate: {
           notNull: { msg: "KTP tidak boleh kosong" },
           notEmpty: { msg: "KTP tidak boleh kosong" },
